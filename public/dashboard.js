@@ -135,6 +135,8 @@ $(document).ready(() => {
     const queueHost = $(this).data('queue-host');
     const jobState = $(this).data('job-state');
 
+    console.log('searchButton', queueName, queueHost, jobState);
+
     const searchText = $('#searchInput').val();
     window.location.href = `${basePath}/${encodeURIComponent(
       queueHost
@@ -150,6 +152,7 @@ $(document).ready(() => {
     const queueName = $(this).data('queue-name');
     const queueHost = $(this).data('queue-host');
     const jobState = $(this).data('job-state');
+    console.log('Test', queueName, queueHost, jobState);
 
     const confirmationResponse = window.confirm(
       `Remove repeatable job #${jobId} in queue "${queueHost}/${queueName}"?`
