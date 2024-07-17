@@ -133,7 +133,7 @@ $(document).ready(() => {
 
     const queueName = $(this).data('queue-name');
     const queueHost = $(this).data('queue-host');
-    const jobState = $(this).data('job-state');
+    const jobState = $(this).data('state');
 
     console.log('searchButton', queueName, queueHost, jobState);
 
@@ -152,7 +152,6 @@ $(document).ready(() => {
     const queueName = $(this).data('queue-name');
     const queueHost = $(this).data('queue-host');
     const jobState = $(this).data('job-state');
-    console.log('Test', queueName, queueHost, jobState);
 
     const confirmationResponse = window.confirm(
       `Remove repeatable job #${jobId} in queue "${queueHost}/${queueName}"?`

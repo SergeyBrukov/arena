@@ -128,8 +128,6 @@ async function _html(req, res) {
   }
 
   if (searchText) {
-    console.log("SEARCH TEXT",searchText);
-    console.log("LOG", jobs[0]?.data?.url, jobs[0], jobs[0]?.data);
     jobs = jobs.filter(job => job.data && job.data.url.includes(searchText));
   }
 

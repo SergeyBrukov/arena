@@ -129,7 +129,9 @@
   </div>
   <label for="searchInput">
     <input id="searchInput" class="search-input" type="text" placeholder="Search" />
-    <button id="searchButton">Search</button>
+    <button id="searchButton" data-queue-host="{{ queueHost }}" data-queue-name="{{ queueName }}"
+            data-state="{{ state }}">Search
+    </button>
   </label>
 </div>
 
