@@ -3,6 +3,9 @@
 <h3>{{capitalize state}} Jobs</h3>
 
 <div class="row pagination-container">
+  <label for="searchInput">
+    <input id="searchInput" class="search-input" type="text" placeholder="Search" />
+  </label>
   <div class="col-sm-6">
     {{#unless disablePagination}}
     <nav aria-label="Job navigation">
