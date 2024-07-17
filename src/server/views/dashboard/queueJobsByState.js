@@ -15,6 +15,7 @@ function getStates(queue) {
   }
   return BULL_STATES;
 }
+
 /**
  * Determines if the requested job state lookup is valid.
  *
@@ -53,7 +54,7 @@ async function _json(req, res) {
   if (queue.IS_BEE) {
     jobs = await queue.getJobs(state, {size: 1000});
     jobs = jobs.map((j) =>
-      _.pick(j, 'id', 'progress', 'data', 'options', 'status')
+      _.pick(j, 'id', 'progress', 'data', 'options', 'status'),
     );
   } else {
     const words = state.split('-');
@@ -188,6 +189,7 @@ async function _html(req, res) {
     pageSize,
     lastPage: _.last(pages),
     order,
+    searchText: searchText || '',
   });
 }
 
