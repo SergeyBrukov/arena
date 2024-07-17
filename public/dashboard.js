@@ -127,7 +127,7 @@ $(document).ready(() => {
     }
   });
 
-  $('#searchButton').on('click', (e) => {
+  $('#searchButton').on('click', function (e) {
     e.preventDefault();
     $(this).prop('disabled', true);
 
