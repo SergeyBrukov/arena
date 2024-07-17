@@ -79,6 +79,7 @@ async function _html(req, res) {
   const {queueName, queueHost, state} = req.params;
   const {Queues, Flows} = req.app.locals;
   const queue = await Queues.get(queueName, queueHost);
+  const searchText = req.query.search;
   const basePath = req.baseUrl;
 
   if (!queue)
@@ -126,6 +127,11 @@ async function _html(req, res) {
     jobs = await queue.getJobs(stateTypes, startId, endId, order === 'asc');
   }
 
+  if (searchText) {
+    console.log("SEARCH TEXT",searchText);
+    jobs = jobs.filter(job => job.data && job.data.toString().includes(searchText));
+  }
+
   for (let i = 0; i < jobs.length; i++) {
     if (!jobs[i]) {
       jobs[i] = {
@@ -158,6 +164,8 @@ async function _html(req, res) {
     state === 'completed' ||
     !queue.IS_BULL
   );
+
+  console.log("JSOBS",jobs);
 
   return res.render('dashboard/templates/queueJobsByState', {
     basePath,
