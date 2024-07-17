@@ -129,13 +129,9 @@ $(document).ready(() => {
 
   $('#searchButton').on('click', function (e) {
     e.preventDefault();
-    $(this).prop('disabled', true);
-
     const queueName = $(this).data('queue-name');
     const queueHost = $(this).data('queue-host');
     const jobState = $(this).data('state');
-
-    console.log('searchButton', queueName, queueHost, jobState);
 
     const searchText = $('#searchInput').val();
     window.location.href = `${basePath}/${encodeURIComponent(

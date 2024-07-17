@@ -128,7 +128,12 @@ async function _html(req, res) {
   }
 
   if (searchText) {
-    jobs = jobs.filter(job => job.data && job.data.url.includes(searchText));
+    jobs = jobs.filter(job => {
+      if (job.data && job.data.url.includes(searchText)) {
+        console.log('job.data.url & SEARCH', job.data.url, searchText);
+        return job;
+      }
+    });
   }
 
   for (let i = 0; i < jobs.length; i++) {
