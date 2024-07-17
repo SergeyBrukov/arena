@@ -129,7 +129,8 @@ async function _html(req, res) {
 
   if (searchText) {
     console.log("SEARCH TEXT",searchText);
-    jobs = jobs.filter(job => job.data && job.data.toString().includes(searchText));
+    console.log("LOG", jobs[0]?.data?.url, jobs[0], jobs[0]?.data);
+    jobs = jobs.filter(job => job.data && job.data.url.includes(searchText));
   }
 
   for (let i = 0; i < jobs.length; i++) {
@@ -164,8 +165,6 @@ async function _html(req, res) {
     state === 'completed' ||
     !queue.IS_BULL
   );
-
-  console.log("JSOBS",jobs);
 
   return res.render('dashboard/templates/queueJobsByState', {
     basePath,

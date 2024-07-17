@@ -127,6 +127,20 @@ $(document).ready(() => {
     }
   });
 
+  $('#searchButton').on('click', (e) => {
+    e.preventDefault();
+    $(this).prop('disabled', true);
+
+    const queueName = $(this).data('queue-name');
+    const queueHost = $(this).data('queue-host');
+    const jobState = $(this).data('job-state');
+
+    const searchText = $('#searchInput').val();
+    window.location.href = `${basePath}/${encodeURIComponent(
+      queueHost
+    )}/${encodeURIComponent(queueName)}/${jobState}?search=${searchText}`;
+  })
+
   // Set up individual "remove repeatable job" handler
   $('.js-remove-repeatable-job').on('click', function (e) {
     e.preventDefault();
